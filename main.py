@@ -158,8 +158,7 @@ def genetic_algorithm(initial_schedule, generations=GEN, population_size=POP, cr
 
 st.title("📺 TV Program Schedule Optimizer")
 
-# --- Sliders in the Sidebar ---
-st.sidebar.header("GA Parameters")
+# --- Sliders ---
 co_r = st.slider(
     "Crossover Rate", 
     min_value=0.1, 
