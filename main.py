@@ -14,9 +14,6 @@ MUT_R = st.sidebar.slider("Mutation Rate", 0.1, 0.5, 0.3, 0.05)
 st.write(f"**Current Parameters:**")
 st.write(f"- Crossover Rate: {CO_R}")
 st.write(f"- Mutation Rate: {MUT_R}")
-st.write(f"- Generations: {GEN}")
-st.write(f"- Population Size: {POP}")
-st.write(f"- Elitism Size: {EL_S}")
 
 if st.button("Run Genetic Algorithm"):
     with st.spinner("Running genetic algorithm..."):
