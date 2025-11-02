@@ -159,6 +159,11 @@ for time_slot, program in enumerate(final_schedule):
     st.write(f"Time Slot {all_time_slots[time_slot]:02d}:00 - Program {program}")
 
 st.write("Total Ratings:", fitness_function(final_schedule))
-})
 
-return schedule
+ # make a table to display
+    table = pd.DataFrame({
+        "Time Slot": [f"{t:02d}:00" for t in all_time_slots[:len(final_schedule)]],
+        "Program": final_schedule
+    })
+    return schedule
+
