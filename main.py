@@ -1,4 +1,5 @@
 import streamlit as st
+import ga_ratings
 
 # Main Streamlit app
 st.title("📺 TV Program Scheduling Optimizer")
