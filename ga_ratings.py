@@ -1,10 +1,6 @@
 import csv
 import streamlit as st
 
-
-def run_genetic_algorithm(co_r, mut_r):
-    return
-
 # Function to read the CSV file and convert it to the desired format
 def read_csv_to_dict(file_path):
     program_ratings = {}
@@ -29,7 +25,7 @@ program_ratings_dict = read_csv_to_dict(file_path)
 
 # Print the result (you can also return or process it further)
 for program, ratings in program_ratings_dict.items():
-    print(f"'{program}': {ratings},")
+    st.write(f"'{program}': {ratings},")
 
 
 import random
@@ -147,16 +143,38 @@ def genetic_algorithm(initial_schedule, generations=GEN, population_size=POP, cr
 
 ##################################################### RESULTS ###################################################################################
 
-# brute force
-initial_best_schedule = finding_best_schedule(all_possible_schedules)
+import pandas as pd
 
-rem_t_slots = len(all_time_slots) - len(initial_best_schedule)
-genetic_schedule = genetic_algorithm(initial_best_schedule, generations=GEN, population_size=POP, elitism_size=EL_S)
+def run_genetic_algorithm(co_r, mut_r):
+    initial_best_schedule = finding_best_schedule(all_possible_schedules)
+    rem_t_slots = len(all_time_slots) - len(initial_best_schedule)
 
-final_schedule = initial_best_schedule + genetic_schedule[:rem_t_slots]
+    genetic_schedule = genetic_algorithm(
+        initial_best_schedule,
+        generations=GEN,
+        population_size=POP,
+        crossover_rate=co_r,
+        mutation_rate=mut_r,
+        elitism_size=EL_S
+    )
 
-st.write("\nFinal Optimal Schedule:")
-for time_slot, program in enumerate(final_schedule):
-    st.write(f"Time Slot {all_time_slots[time_slot]:02d}:00 - Program {program}")
+    final_schedule = initial_best_schedule + genetic_schedule[:rem_t_slots]
+    total = fitness_function(final_schedule)
 
-st.write("Total Ratings:", fitness_function(final_schedule))
+    def init_data():
+     global ratings, all_programs, all_time_slots, all_possible_schedules
+    file_path = "program_ratings.csv"
+    ratings = read_csv_to_dict(file_path)
+    all_programs = list(ratings.keys())
+    all_time_slots = list(range(6, 24))
+    all_possible_schedules = initialize_pop(all_programs, all_time_slots)
+
+
+    # make a DataFrame for Streamlit
+    data = {
+        "Time Slot": [f"{hour:02d}:00" for hour in all_time_slots],
+        "Program": final_schedule,
+        "Rating": [ratings[p][i] for i, p in enumerate(final_schedule)]
+    }
+    df = pd.DataFrame(data)
+    return df, total
