@@ -2,6 +2,9 @@ import csv
 import streamlit as st
 
 
+def run_genetic_algorithm(co_r, mut_r):
+    return
+
 # Function to read the CSV file and convert it to the desired format
 def read_csv_to_dict(file_path):
     program_ratings = {}
@@ -33,17 +36,16 @@ import random
 
 ##################################### DEFINING PARAMETERS AND DATASET ################################################################
 # Sample rating programs dataset for each time slot.
-def run_genetic_algorithm(co_r=None, mut_r=None):
-    ratings = program_ratings_dict
+ratings = program_ratings_dict
 
-    GEN = 200 #asal 100
-    POP = 150 # asal 50
-    CO_R = 0.7 #0.8
-    MUT_R = 0.3 #0.2
-    EL_S = 2 #2
+GEN = 200 #asal 100
+POP = 150 # asal 50
+CO_R = 0.7 #0.8
+MUT_R = 0.3 #0.2
+EL_S = 2 #2
 
-    all_programs = list(ratings.keys()) # all programs
-    all_time_slots = list(range(6, 24)) # time slots
+all_programs = list(ratings.keys()) # all programs
+all_time_slots = list(range(6, 24)) # time slots
 
 ######################################### DEFINING FUNCTIONS ########################################################################
 # defining fitness function
@@ -153,10 +155,8 @@ genetic_schedule = genetic_algorithm(initial_best_schedule, generations=GEN, pop
 
 final_schedule = initial_best_schedule + genetic_schedule[:rem_t_slots]
 
-import pandas as pd
-    data = {
-        "Time Slot": [f"{hour:02d}:00" for hour in all_time_slots],
-        "Program": final_schedule
-    }
-    return pd.DataFrame(data)
+st.write("\nFinal Optimal Schedule:")
+for time_slot, program in enumerate(final_schedule):
+    st.write(f"Time Slot {all_time_slots[time_slot]:02d}:00 - Program {program}")
 
+st.write("Total Ratings:", fitness_function(final_schedule))
