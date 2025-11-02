@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from program_rating import ga_ratings  # import GA logic
+import ga_ratings  # import GA logic
 
 st.title("Scheduling using Genetic Algorithm")
 
