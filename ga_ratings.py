@@ -2,8 +2,6 @@ import csv
 import streamlit as st
 
 
-def run_genetic_algorithm(co_r, mut_r):
-
 # Function to read the CSV file and convert it to the desired format
 def read_csv_to_dict(file_path):
     program_ratings = {}
@@ -35,6 +33,7 @@ import random
 
 ##################################### DEFINING PARAMETERS AND DATASET ################################################################
 # Sample rating programs dataset for each time slot.
+def run_genetic_algorithm(co_r=None, mut_r=None):
 ratings = program_ratings_dict
 
 GEN = 200 #asal 100
@@ -154,16 +153,10 @@ genetic_schedule = genetic_algorithm(initial_best_schedule, generations=GEN, pop
 
 final_schedule = initial_best_schedule + genetic_schedule[:rem_t_slots]
 
-st.write("\nFinal Optimal Schedule:")
-for time_slot, program in enumerate(final_schedule):
-    st.write(f"Time Slot {all_time_slots[time_slot]:02d}:00 - Program {program}")
-
-st.write("Total Ratings:", fitness_function(final_schedule))
-
- # make a table to display
-    table = pd.DataFrame({
-        "Time Slot": [f"{t:02d}:00" for t in all_time_slots[:len(final_schedule)]],
+import pandas as pd
+    data = {
+        "Time Slot": [f"{hour:02d}:00" for hour in all_time_slots],
         "Program": final_schedule
-    })
-    return schedule
+    }
+    return pd.DataFrame(data)
 
