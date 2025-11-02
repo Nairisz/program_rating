@@ -34,16 +34,16 @@ import random
 ##################################### DEFINING PARAMETERS AND DATASET ################################################################
 # Sample rating programs dataset for each time slot.
 def run_genetic_algorithm(co_r=None, mut_r=None):
-ratings = program_ratings_dict
+    ratings = program_ratings_dict
 
-GEN = 200 #asal 100
-POP = 150 # asal 50
-CO_R = 0.7 #0.8
-MUT_R = 0.3 #0.2
-EL_S = 2 #2
+    GEN = 200 #asal 100
+    POP = 150 # asal 50
+    CO_R = 0.7 #0.8
+    MUT_R = 0.3 #0.2
+    EL_S = 2 #2
 
-all_programs = list(ratings.keys()) # all programs
-all_time_slots = list(range(6, 24)) # time slots
+    all_programs = list(ratings.keys()) # all programs
+    all_time_slots = list(range(6, 24)) # time slots
 
 ######################################### DEFINING FUNCTIONS ########################################################################
 # defining fitness function
