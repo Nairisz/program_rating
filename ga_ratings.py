@@ -1,6 +1,10 @@
 import csv
 import streamlit as st
 
+
+def run_genetic_algorithm(co_r, mut_r):
+    return schedule
+
 # Function to read the CSV file and convert it to the desired format
 def read_csv_to_dict(file_path):
     program_ratings = {}
