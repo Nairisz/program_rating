@@ -6,8 +6,8 @@ st.set_page_config(
     page_icon="📺", #untuk header taskbar
 )
 
-ori_slider = st.Page('gen_algo.py', title='Original: Program Schedule Optimizer')
-edited_slider = st.Page('tsp.py', title='Edited: Program Schedule Optimizer')
+ori_slider = st.Page('prog_rater_ori.py', title='Original: Program Schedule Optimizer')
+edited_slider = st.Page('prog_rater_edited.py', title='Edited: Program Schedule Optimizer')
 
 pg = st.navigation(
         {
