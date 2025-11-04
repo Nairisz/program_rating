@@ -43,7 +43,7 @@ def read_csv_to_dict(file_path):
         return None, 0
 
 # Path to the CSV file
-file_path = "program_ratings.csv"
+file_path = "program_ratings_edited.csv"
 
 # Get the data in the required format
 program_ratings_dict, num_slots_from_csv = read_csv_to_dict(file_path)
@@ -180,11 +180,11 @@ if st.button("Run Genetic Algorithm"):
     progress_bar = st.progress(0, "Initializing...")
 
     # Create ONE random initial schedule
-    # This is the correct way to seed a GA
+    # The correct way to seed a GA
     initial_schedule = [random.choice(all_programs) for _ in all_time_slots]
 
     # Run the genetic algorithm
-    # We pass the slider values (co_r, mut_r) to the function
+    #  Pass the slider values (co_r, mut_r) to the function
     final_schedule = genetic_algorithm(
         initial_schedule, 
         generations=GEN, 
@@ -214,7 +214,7 @@ if st.button("Run Genetic Algorithm"):
             results_data.append({
                 "Time Slot": time_str, 
                 "Program": program,
-                "Rating": f"{program_rating:.2f}" # Format to 2 decimal places
+                "Rating": f"{program_rating:.1f}" # Format to 1 decimal places
             })
     
     st.table(results_data)
