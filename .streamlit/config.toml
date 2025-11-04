@@ -1,5 +1,6 @@
 [theme]
-base="dark"
-primaryColor="#7d2fb9"
-backgroundColor="#645799"
-secondaryBackgroundColor="#bb6bb7"
+base="light" # Switched to light base for pastel colors
+primaryColor="#007bff" # A standard, vibrant blue for interaction
+backgroundColor="#B3E5FC" # A light, pastel sky blue (a good background choice)
+secondaryBackgroundColor="#81D4FA" # A slightly darker pastel blue for secondary elements
+textColor="#212529" # Dark text for readability on the light background
