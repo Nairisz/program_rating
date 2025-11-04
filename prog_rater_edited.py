@@ -201,7 +201,6 @@ if st.button("Run Genetic Algorithm"):
     st.subheader("\n🏆 Final Optimal Schedule")
     
     # Create a simple table for results
-    # Create a simple table for results
     results_data = []
 
     for time_slot_index, program in enumerate(final_schedule):
@@ -221,7 +220,7 @@ if st.button("Run Genetic Algorithm"):
     st.table(results_data)
     
     st.write("---")
-    st.header(f"Total Ratings: {fitness_function(final_schedule):.1f}")
+    st.header(f"⭐ Total Ratings: {fitness_function(final_schedule):.1f}")
 
 else:
     st.info("Adjust parameters in the sidebar and click 'Run Genetic Algorithm' to start.")
