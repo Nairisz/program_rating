@@ -157,7 +157,8 @@ def genetic_algorithm(initial_schedule, generations=GEN, population_size=POP, cr
 
 ##################################################### RESULTS ###################################################################################
 
-st.title("📺 TV Program Schedule Optimizer")
+st.title("📺 TV Program Schedule Optimizer (Original)")
+st.markdown(" ##### (This is using Original CSV) ")
 
 # --- Sliders ---
 co_r = st.slider(
