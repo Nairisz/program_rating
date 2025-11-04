@@ -224,4 +224,4 @@ if st.button("Run Genetic Algorithm"):
     st.header(f"⭐ Total Ratings: {fitness_function(final_schedule):.1f}")
 
 else:
-    st.info("Adjust parameters in the sidebar and click 'Run Genetic Algorithm' to start.")
+    st.info("Adjust parameters on the sliders and click 'Run Genetic Algorithm' to start.")
